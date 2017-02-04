@@ -5,5 +5,5 @@ services:
 - docker
 sudo: required
 script:
-- docker login -u="$DOCKER_USR" -p="$DOCKER_PWD"
+- docker login -u="$DOCKER_USR" -p="$DOCKER_PWD" quay.io
 - make push
