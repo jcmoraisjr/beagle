@@ -1,14 +1,3 @@
-### User vars:
-# REPO_LOCAL: URL of the local repo, eg: localhost/project
-# REPO_PUBLIC: URL of the public repository, eg: quay.io/username/project
-# DOCKER_HUB: URL of the hub, eg: quay.io, or empty if using Docker Hub
-# DOCKER_ROOTFS: optional, defaults to `rootfs`, root directory of Dockerfile
-
-### Travis vars:
-# TRAVIS*: default Travis-CI env vars
-# DOCKER_USR: User used to login to Hub, using a Travis env var is not a bad idea. Tip: create a robot account
-# DOCKER_PWD: Password of this user; USE Travis environment variable
-
 GIT_COMMIT=git-$(shell git rev-parse --short HEAD)
 GIT_TAG=false
 ifeq ($(DOCKER_ROOTFS),)
