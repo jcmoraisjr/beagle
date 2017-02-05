@@ -7,4 +7,6 @@ var (
 	Repository = "UNKNOWN"
 	// Version Version
 	Version = "UNKNOWN"
+	// Timestamp Timestamp of build generation
+	Timestamp = "UNKNOWN"
 )
