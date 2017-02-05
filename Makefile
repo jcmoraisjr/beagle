@@ -13,10 +13,10 @@ build:
 container:
 	docker build -t $(REPO):$(TAG) rootfs
 push:
-	echo docker push $(REPO):$(TAG)
+	docker push $(REPO):$(TAG)
 all: build container push
 travis-build: build
-ifeq ($(TRAVIS_PULL),false)
+ifeq ($(TRAVIS_PULL_REQUEST),false)
 ifneq ($(TAG),)
 	@$(MAKE) container push
 endif
