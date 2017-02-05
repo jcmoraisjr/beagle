@@ -9,7 +9,6 @@
 # DOCKER_USR: User used to login to Hub, using a Travis env var is not a bad idea. Tip: create a robot account
 # DOCKER_PWD: Password of this user; USE Travis environment variable
 
-GIT_REPO=$(shell git config --get remote.origin.url)
 GIT_COMMIT=git-$(shell git rev-parse --short HEAD)
 GIT_TAG=false
 ifeq ($(DOCKER_ROOT),)
