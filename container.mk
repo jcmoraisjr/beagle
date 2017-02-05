@@ -17,8 +17,8 @@ GIT_TAG=true
 endif
 endif
 
-.PHONY: container push tag-push
-container:
+.PHONY: image push tag-push
+image:
 	docker build -t $(REPO):$(TAG) $(DOCKER_ROOTFS)
 push:
 	docker push $(REPO):$(TAG)
@@ -26,6 +26,6 @@ tag-push:
 ifeq ($(GIT_TAG),true)
 ifeq ($(TRAVIS_PULL_REQUEST),false)
 	@docker login -u="$(DOCKER_USR)" -p="$(DOCKER_PWD)" $(DOCKER_HUB)
-	@$(MAKE) container push
+	@$(MAKE) image push
 endif
 endif

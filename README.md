@@ -31,7 +31,7 @@ After `include container.mk` Makefile will have these new variables:
 
 `container.mk` add the following targets to Makefile:
 
-* `container`: Build a new Docker image
+* `image`: Build a new Docker image
 * `push`: Push a Docker image to a image repository
 * `tag-push`: Push only if Travis CI tells that this build has a tag and is not a pull request
 
