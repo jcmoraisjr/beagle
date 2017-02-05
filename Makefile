@@ -31,7 +31,7 @@ push:
 tag-push:
 ifeq ($(GIT_TAG),true)
 ifeq ($(TRAVIS_PULL_REQUEST),false)
-	echo @docker login -u="$(DOCKER_USR)" -p="$(DOCKER_PWD)" $(DOCKER_HUB)
+	@docker login -u="$(DOCKER_USR)" -p="$(DOCKER_PWD)" $(DOCKER_HUB)
 	@$(MAKE) container push
 endif
 endif
