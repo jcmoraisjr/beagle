@@ -2,6 +2,7 @@ ifeq ($(TRAVIS),)
 REPO=localhost/beagle
 TAG=latest
 else
+DOCKER_HUB=quay.io
 REPO=quay.io/jcmoraisjr/beagle
 TAG=$(TRAVIS_TAG)
 endif
