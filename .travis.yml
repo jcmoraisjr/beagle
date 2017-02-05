@@ -5,4 +5,4 @@ services:
 - docker
 sudo: required
 script:
-- env | grep -v 'DOCKER_PWD='
+- make build && [ -n "$TRAVIS_TAG" ] && docker login -u="$DOCKER_USR" -p="$DOCKER_PWD" quay.io && make push
