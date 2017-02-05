@@ -5,4 +5,4 @@ services:
 - docker
 sudo: required
 script:
-- make travis-build
+- DOCKER_HUB=quay.io make travis-build

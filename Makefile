@@ -18,6 +18,7 @@ all: build container push
 travis-build: build
 ifeq ($(TRAVIS_PULL_REQUEST),false)
 ifneq ($(TAG),)
+	@docker login -u="$(DOCKER_USR)" -p="$(DOCKER_PWD)" $(DOCKER_HUB)
 	@$(MAKE) container push
 endif
 endif
