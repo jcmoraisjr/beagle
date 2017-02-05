@@ -1,10 +1,17 @@
+### User vars:
 # REPO_LOCAL: URL of the local repo, eg: localhost/project
 # REPO_PUBLIC: URL of the public repository, eg: quay.io/username/project
+# DOCKER_ROOT: optional, defaults to `rootfs`, root directory of Dockerfile
+
+### Travis vars:
 # TRAVIS*: default Travis-CI env vars
 
 GIT_REPO=$(shell git config --get remote.origin.url)
 GIT_COMMIT=git-$(shell git rev-parse --short HEAD)
 GIT_TAG=false
+ifeq ($(DOCKER_ROOT),)
+DOCKER_ROOT=rootfs
+endif
 
 ifeq ($(TRAVIS),)
 REPO?=$(REPO_LOCAL)
@@ -22,7 +29,7 @@ endif
 
 .PHONY: container push tag-push
 container:
-	docker build -t $(REPO):$(TAG) rootfs
+	docker build -t $(REPO):$(TAG) $(DOCKER_ROOT)
 push:
 	docker push $(REPO):$(TAG)
 tag-push:
