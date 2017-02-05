@@ -2,9 +2,12 @@
 # REPO_LOCAL: URL of the local repo, eg: localhost/project
 # REPO_PUBLIC: URL of the public repository, eg: quay.io/username/project
 # DOCKER_ROOT: optional, defaults to `rootfs`, root directory of Dockerfile
+# DOCKER_HUB: URL of the hub, eg: quay.io, or empty if using Docker Hub
 
 ### Travis vars:
 # TRAVIS*: default Travis-CI env vars
+# DOCKER_USR: User used to login to Hub, using a Travis env var is not a bad idea. Tip: create a robot account
+# DOCKER_PWD: Password of this user; USE Travis environment variable
 
 GIT_REPO=$(shell git config --get remote.origin.url)
 GIT_COMMIT=git-$(shell git rev-parse --short HEAD)
@@ -17,7 +20,6 @@ ifeq ($(TRAVIS),)
 REPO?=$(REPO_LOCAL)
 TAG?=latest
 else
-DOCKER_HUB=quay.io
 REPO=$(REPO_PUBLIC)
 ifeq ($(TRAVIS_TAG),)
 TAG=$(GIT_COMMIT)

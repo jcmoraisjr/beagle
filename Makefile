@@ -12,4 +12,5 @@ build:
 
 REPO_LOCAL=localhost/beagle
 REPO_PUBLIC=quay.io/jcmoraisjr/beagle
+DOCKER_HUB=quay.io
 include container.mk
