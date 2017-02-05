@@ -1,16 +1,20 @@
-PRJ=github.com/jcmoraisjr/beagle
+REPO_PUBLIC=quay.io/jcmoraisjr/beagle
+REPO_LOCAL=localhost/beagle
+ROOT_PKG=github.com/jcmoraisjr/beagle/pkg
 GOOS=linux
+GOARCH=amd64
 GIT_REPO=$(shell git config --get remote.origin.url)
+GIT_COMMIT=git-$(shell git rev-parse --short HEAD)
 GIT_TAG=false
 
 ifeq ($(TRAVIS),)
-REPO?=localhost/beagle
+REPO?=$(REPO_LOCAL)
 TAG?=latest
 else
 DOCKER_HUB=quay.io
-REPO=quay.io/jcmoraisjr/beagle
+REPO=$(REPO_PUBLIC)
 ifeq ($(TRAVIS_TAG),)
-TAG=git-$(shell git rev-parse --short HEAD)
+TAG=$(GIT_COMMIT)
 else
 TAG=$(TRAVIS_TAG)
 GIT_TAG=true
@@ -20,10 +24,10 @@ endif
 .PHONY: build container push tag-push
 
 build:
-	CGO_ENAGLE=0 GOOS=$(GOOS) GOARCH=amd64 go build \
-	  -ldflags "-s -w -X $(PRJ)/version.Product=Beagle -X $(PRJ)/version.Repository=$(GIT_REPO) -X $(PRJ)/version.Version=$(TAG)" \
+	CGO_ENAGLE=0 GOOS=$(GOOS) GOARCH=$(GOARCH) go build \
+	  -ldflags "-s -w -X $(ROOT_PKG)/version.Product=Beagle -X $(ROOT_PKG)/version.Repository=$(GIT_REPO) -X $(ROOT_PKG)/version.Version=$(TAG)" \
 	  -o rootfs/beagle \
-	  $(PRJ)/pkg
+	  $(ROOT_PKG)/beagle
 container:
 	docker build -t $(REPO):$(TAG) rootfs
 push:
