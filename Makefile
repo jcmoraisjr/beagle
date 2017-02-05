@@ -14,7 +14,7 @@ TIMESTAMP=$(shell date '+%Y/%m/%d_%H:%M:%S')
 
 .PHONY: build
 build:
-	CGO_ENAGLE=0 GOOS=$(GOOS) GOARCH=$(GOARCH) go build \
+	GOOS=$(GOOS) GOARCH=$(GOARCH) go build \
 	  -ldflags "-s -w -X $(ROOT_PKG)/version.Product=Beagle -X $(ROOT_PKG)/version.Repository=$(GIT_REPO) -X $(ROOT_PKG)/version.Version=$(TAG) -X $(ROOT_PKG)/version.Timestamp=$(TIMESTAMP)" \
 	  -o rootfs/beagle \
 	  $(ROOT_PKG)/beagle
