@@ -45,7 +45,7 @@ jobs:
     # https://github.com/docker/build-push-action/issues/252
     # https://github.com/moby/buildkit/issues/1896
     # https://github.com/docker/build-push-action/blob/master/docs/advanced/cache.md
-    - name: move cache
+    - name: Move cache
       run: |
         rm -rf /tmp/.buildx-cache
         mv /tmp/.buildx-cache-new /tmp/.buildx-cache
