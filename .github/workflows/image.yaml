@@ -36,8 +36,8 @@ jobs:
         buid-args: |
           GIT_TAG=${{ env.GIT_TAG }}
         tags: |
-          quay.io/jcmoraisjr/beagle:${{ GIT_TAG }}
-          jcmoraisjr/beagle:${{ GIT_TAG }}
+          quay.io/jcmoraisjr/beagle:${{ env.GIT_TAG }}
+          jcmoraisjr/beagle:${{ env.GIT_TAG }}
     # Temp fix
     # https://github.com/docker/build-push-action/issues/252
     # https://github.com/moby/buildkit/issues/1896
