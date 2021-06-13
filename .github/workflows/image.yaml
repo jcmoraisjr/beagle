@@ -34,7 +34,7 @@ jobs:
         cache-to: type=local,dest=/tmp/.buildx-cache-new
         push: true
         buid-args: |
-          GIT_TAG=${{ $GIT_TAG }}
+          GIT_TAG=${{ env.GIT_TAG }}
         tags: |
           quay.io/jcmoraisjr/beagle:${{ GIT_TAG }}
           jcmoraisjr/beagle:${{ GIT_TAG }}
