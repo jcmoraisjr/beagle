@@ -1,6 +1,7 @@
 # Beagle
 
- Reusable Makefile for Travis CI and Docker builds.
+* v0.x: Reusable Makefile for Travis CI and Docker builds.
+* v1.x: GitHub Actions and Docker build experiments.
 
 # Usage
 
