@@ -33,7 +33,7 @@ jobs:
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache-new
         push: true
-        buid-args: |
+        build-args: |
           GIT_TAG=${{ env.GIT_TAG }}
         tags: |
           quay.io/jcmoraisjr/beagle:${{ env.GIT_TAG }}
