@@ -7,7 +7,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      EXTRA_TAGS:
+      # this can be declared without content if there isn't any extra tag:
+      # EXTRA_TAGS:
+      EXTRA_TAGS: latest canary
     steps:
     - name: Run envvars
       run: |
