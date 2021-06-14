@@ -6,6 +6,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      EXTRA_TAGS: latest
     steps:
     - uses: actions/checkout@v2
     - uses: docker/login-action@v1 
@@ -29,7 +31,7 @@ jobs:
         TAGS=$(
           for repository in quay.io/jcmoraisjr jcmoraisjr; do
             for project in beagle; do
-              for tag in "$GIT_TAG" latest; do
+              for tag in "$GIT_TAG" ${{ env.EXTRA_TAGS }}; do
                 echo -n "${repository}/${project}:${tag},"
               done
             done
